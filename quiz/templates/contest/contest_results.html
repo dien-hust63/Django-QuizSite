@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+{% block title %}
+  <title>Results</title>
+{% endblock title %}
+{% block content %}
+  <h1>{{result.quiz.title}}</h1>
+  <p>User: {{result.user.username}}</p>
+  {% if result.final_score < result.quiz.score_to_pass %}
+    <p>Fail: </p>
+  {% else %}
+    <p>Success: </p>
+  {% endif %}
+  <p>Score to pass: {{result.quiz.score_to_pass}}/{{result.quiz.total_score}}</p>
+  <p>Your final score: {{result.final_score}}/{{result.quiz.total_score}}</p>
+  <a href="{% url 'detail-result' result.id %}">View detail results</a>
+  <br>
+  <a href="{% url 'quiz-confirm' quiz.category.id quiz.id%}">Do quiz again ?</a>
+  <br>
+  <a href="{% url 'index' %}">Back to home page.</a>
+  
+{% endblock content %}

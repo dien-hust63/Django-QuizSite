@@ -1,0 +1,45 @@
+{% extends "base_generic.html" %}
+{% block title %}
+  <title>Detail Result</title>
+{% endblock title %}
+{% load static %}
+{% block scripts %}
+ <script src = "{% static 'js/test.js' %}" defer></script>
+{% endblock scripts %}
+{% block content %}
+  <!-- <p>
+    {% for question in detail_result.list_question %}
+      <label>{{question.title}}. {{question.content}}</label>
+      <ul id="id_{{question.id}}">
+        {% for answer in question.list_answer %}
+          <li>
+            <label for="{{question.id}}_{{answer.id}}">
+              {% if answer.is_correct_answer %}
+              <input type="checkbox" name="{{question.id}}" value="{{answer.id}}" disabled="disabled" id="{{question.id}}_{{answer.id}}" is_correct = "true">
+              <span style = "color: red;">{{answer.content}}</span>
+              {% else %}
+              <input type="checkbox" name="{{question.id}}" value="{{answer.id}}" disabled="disabled" id="{{question.id}}_{{answer.id}}" is_correct = "false">
+              <span>{{answer.content}}</span>
+              {% endif %}
+              
+            </label>
+          </li>
+        {% endfor %}
+        
+      </ul>
+    {% endfor %}
+  </p> -->
+  {% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        
+        {{ field.label_tag }} {{field}}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    </div>
+ {% endfor %}
+  
+  
+  
+{% endblock content %}

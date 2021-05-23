@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+  <title>Detail quiz</title>
+{% endblock title %}
+
+{% load static %}
+
+{% block scripts %}
+  <script src="{% static 'js/countdown.js' %}" defer></script>
+{% endblock scripts %}
+
+{% block content %}
+  <h1>{{quiz.title}}</h1>
+  <p>Time: {{quiz.max_time}} minutes</p>
+  <p>Total score: {{quiz.total_score}}</p>
+  <p>Score to pass: {{quiz.score_to_pass}}</p>
+  <p>Level: {{quiz.get_level_display}}</p>
+  <h2>Are you ready to do this quiz ?</h2>
+  <button><a href="{% url 'quiz-detail' quiz.category.id quiz.id %}">Yes, I'm sure</a></button>
+  <button><a href="{% url 'quiz' quiz.category.id %}">Cancel</a></button>
+{% endblock content %}

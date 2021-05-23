@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+{% block title %}
+    <title>Category Detail</title>
+{% endblock title %}
+{% block content %}
+   <h2>List quizes of category {{category.content}}</h2>
+   <p>Total of quizes: {{category.quiz_set.count}}</p>
+   <table style="width:100%">
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th><a href="#">ADD NEW QUIZ</a></th>
+    </tr>
+    {% for quiz in quizes %}
+    <tr>
+      <td><a href="">{{quiz.id}}</a></td>
+      <td><a href="">{{quiz.title}}</a></td>
+      <td>
+        <a href="" style = 'color:red'>Delete ?</a>
+        <br>
+        <a href="">Edit</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+{% endblock content %}

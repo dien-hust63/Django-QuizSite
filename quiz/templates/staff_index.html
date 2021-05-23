@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+{% block title %}
+  <title>Home</title>
+{% endblock title %}
+{% block content %}
+  <h2>Welcome my quiz site</h2>
+  <a href="{% url 'admin:quiz_category_changelist' %}">Create and edit quiz</a>
+  <br>
+  <a href="{% url 'contest' %}">Contest</a>
+  <br>
+  <a href="{% url 'history' user.id %}">History do quiz.</a>
+  <br>
+  <a href="{% url 'statistic' %}">Statistic</a>
+ 
+  
+
+{% endblock content %}

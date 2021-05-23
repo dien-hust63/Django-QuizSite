@@ -1,0 +1,38 @@
+{% extends "base_generic.html" %}
+{% block title %}
+  <title>History</title>
+{% endblock title %}
+{% block content %}
+{% if results %}
+<table style="width:70%">
+    <tr>
+      <th>Quiz</th>
+      <th>Date</th>
+      <th>Score</th>
+      <th>Result</th>
+      <th></th>
+    </tr>
+
+    {% for result in results %}
+    <tr>
+        <td>{{result.quiz.title}}</td>
+        <td>{{result.created}}</td>
+        <td>{{result.final_score}} / {{result.quiz.total_score}}</td>
+        {% if result.final_score < result.quiz.score_to_pass %}
+          <td style = "color:red">Fail</td>
+        {% else %}
+          <td>Pass</td>
+        {% endif %}
+        <td><a href="{% url 'detail-result' result.id %}">Detail Result</a></td>
+        <td><a href="#">Do quiz again ?</a></td>
+    </tr>
+        
+    {% endfor %}
+
+  </table>
+{% else %}
+ <h1>You haven't done any quizes</h1>
+{% endif %}
+
+
+{% endblock content %}

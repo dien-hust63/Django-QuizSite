@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+{% block title %}
+  <title>Contest</title>
+{% endblock title %}
+{% block content %}
+    <h2>Category list</h2>
+        
+    {% if category_list %}
+    <table style="width:100%">
+        <tr>
+          <th>ID</th>
+          <th>Category Name</th>
+          <th><a href="{% url 'create-category' %}">Add new category</a></th>
+        </tr>
+        {% for category in category_list %}
+        <tr>
+          <td><a href="{% url 'category-detail' category.id %}">{{category.id}}</a></td>
+          <td><a href="{% url 'category-detail' category.id %}">{{category.content}}</a></td>
+          <td>
+            <a href="{% url 'delete-category' category.id %}" style="color: red">Delete ?</a>
+            <a href="{% url 'update-category' category.id %}">Edit</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+        <p>Don't have any categories</p> 
+    {% endif %}    
+    
+
+{% endblock content %}

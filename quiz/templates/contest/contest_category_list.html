@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+{% block title %}
+  <title>Contest</title>
+{% endblock title %}
+{% block content %}
+    <h2>Category list</h2>
+        
+    {% if category_list %}
+        <ul>
+            {% for category in category_list %}
+                <li>
+                    <a href="{% url 'quiz' category.pk %}">{{category.content}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Don't have any categories</p> 
+    {% endif %}    
+    
+
+{% endblock content %}
